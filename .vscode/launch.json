@@ -1,0 +1,25 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debugger",
+      "type": "node",
+      "request": "launch",
+      "args": [
+        "${relativeFile}"
+      ],
+      "env": {
+        "TS_NODE_FILES": "true",
+        "TS_NODE_PROJECT": "packages/<package>/tsconfig.json",
+        "TS_NODE_TRANSPILE_ONLY": "true"
+      },
+      "runtimeArgs": [
+        "--nolazy",
+        "-r", "ts-node/register",
+        "-r", "tsconfig-paths/register"
+      ],
+      "cwd": "${workspaceFolder}",
+      "protocol": "inspector"
+    }
+  ]
+}
