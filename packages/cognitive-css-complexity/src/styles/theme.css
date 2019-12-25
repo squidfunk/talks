@@ -1,0 +1,133 @@
+/*
+ * Copyright (c) 2019 Martin Donath <martin.donath@squidfunk.com>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to
+ * deal in the Software without restriction, including without limitation the
+ * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+ * sell copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+ * IN THE SOFTWARE.
+ */
+
+/* ----------------------------------------------------------------------------
+ * Global
+ * ------------------------------------------------------------------------- */
+
+/* Slide container */
+.reveal {
+  font-family: system-ui;
+  font-size: 2.5rem;
+  background-color: #111;
+  color: white;
+}
+
+/* Prefer left alignment */
+.reveal .slides {
+  text-align: left;
+}
+
+/* Always align slide content to top */
+.reveal .slides section {
+  top: 0 !important;
+}
+
+/* Arrows */
+.reveal .controls {
+  color: #00E676;
+}
+
+/* Progress bar */
+.reveal .progress {
+  color: #00E676;
+}
+
+/* Progress bar transition */
+.reveal .progress span {
+  transition-timing-function: cubic-bezier(0.075, 0.85, 0.175, 1);
+}
+
+/* Slide number */
+.reveal .slide-number {
+  background: transparent;
+}
+
+/* Slide number link */
+.reveal .slide-number a {
+  text-decoration: none;
+}
+
+/* ----------------------------------------------------------------------------
+ * Headers
+ * ------------------------------------------------------------------------- */
+
+/* Generic header styles */
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  letter-spacing: -1.5px;
+}
+
+/* ----------------------------------------------------------------------------
+ * Code
+ * ------------------------------------------------------------------------- */
+
+/* Remove excess whitespace */
+pre {
+  white-space: normal;
+}
+
+/* Code blocks */
+code {
+  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+  font-size: 0.75em;
+  line-height: 1.4;
+  white-space: pre;
+}
+
+
+/* --- HEADLINE ANIMATION --- */
+
+@keyframes bottom {
+  from {
+    transform: translate3d(0, 100%, 0);
+  }
+}
+
+.container {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.animation {
+  display: inline-block;
+  white-space: pre;
+  animation-duration: .8s;
+  animation-timing-function: cubic-bezier(0.075, 0.85, 0.175, 1);
+  animation-fill-mode: both;
+  animation-play-state: paused;
+}
+
+.future .animation {
+  animation-play-state: initial;
+  transform: translate3d(0, 100%, 0);
+}
+
+.present .animation,
+.past .animation {
+  animation-name: bottom;
+  animation-play-state: running;
+}

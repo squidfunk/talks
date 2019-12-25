@@ -1,0 +1,31 @@
+{
+  "name": "talks-cognitive-css-complexity",
+  "version": "0.0.0",
+  "description": "Materials related to talks I've given",
+  "homepage": "https://github.com/squidfunk/talks",
+  "bugs": {
+    "url": "https://github.com/squidfunk/talks/issues",
+    "email": "martin.donath@squidfunk.com"
+  },
+  "license": "MIT",
+  "private": true,
+  "author": {
+    "name": "Martin Donath",
+    "email": "martin.donath@squidfunk.com"
+  },
+  "contributors": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/squidfunk/talks.git"
+  },
+  "dependencies": {
+    "escape-html": "^1.0.3",
+    "highlight.js": "^9.17.1",
+    "reveal.js": "^3.8.0"
+  },
+  "devDependencies": {
+    "@polvtypes/reveal.js": "^3.8.1",
+    "@types/escape-html": "0.0.20",
+    "@types/highlight.js": "^9.12.3"
+  }
+}
