@@ -30,18 +30,20 @@ import "reveal.js/css/reveal.css"
 import "./styles/theme.css"
 
 /* ----------------------------------------------------------------------------
- * Presentation
+ * Preprocessing
  * ------------------------------------------------------------------------- */
 
 /* Automatically escape code blocks and remove unnecessary whitespace */
 const blocks = document.querySelectorAll("pre > code")
 for (const block of Array.from(blocks)) {
-  const html = escape(block.innerHTML)
+  const html = block.classList.contains("html")
+    ? escape(block.innerHTML)
+    : block.innerHTML
 
   /* Remove unintended indent */
   const [indent] = html.match(/^[ ]+/m)!
   const code = html
-    .replace(new RegExp(indent, "g"), "")
+    .replace(new RegExp(`^${indent}`, "gm"), "")
     .split(/\n/)
 
   /* Remove empty lines at beginning and end */
@@ -54,34 +56,50 @@ for (const block of Array.from(blocks)) {
   block.innerHTML = code.join("\n")
 }
 
-/* */
-const headlines = document.querySelectorAll("h1, h2, h3, h4, h5, h6")
+/* Initialize text reveal animation */
+const headlines = document.querySelectorAll("[data-animation=reveal]")
 for (const headline of Array.from(headlines)) {
-  const children = Array.from(headline.childNodes) as HTMLElement[] // TODO: ugly
+  const children = Array.from(headline.childNodes) as HTMLElement[]
   const nodes = children
     .reduce<Array<HTMLElement | Text>>((list, child) => {
       if (child.nodeType === Node.TEXT_NODE) {
-        return [...list, ...child.textContent!.split(/(\s+)/).filter(Boolean).map(x => document.createTextNode(x))]
+        return [...list, ...child.textContent!
+          .replace(/(^\s+|\s+$)/g, "")
+          .split(/(\s+)/)
+          .filter(Boolean)
+          .map(x => document.createTextNode(x))
+        ]
       } else {
         return [...list, child]
       }
     }, [])
 
+  /* Replace with animation containers */
   headline.textContent = ""
-  for (const [i, node] of nodes.entries()) {
+  for (let i = 0; i < nodes.length; i++) {
+    const node = nodes[i]
+
+    /* Create animation container */
     const container = document.createElement("span")
     container.classList.add("container")
 
+    /* Create animation */
     const animation = document.createElement("span")
     animation.classList.add("animation")
-    animation.style.animationDelay = `${i * 100}ms`
+    animation.style.animationDelay = `${i * 75}ms`
 
-    animation.appendChild(node) // TODO: ugly
-    container.appendChild(animation) // TODO: ugly
+    /* Add animated word */
+    animation.appendChild(node)
+    container.appendChild(animation)
 
+    /* Add word */
     headline.appendChild(container)
   }
 }
+
+/* ----------------------------------------------------------------------------
+ * Presentation
+ * ------------------------------------------------------------------------- */
 
 /* Initialize presentation */
 Reveal.initialize({

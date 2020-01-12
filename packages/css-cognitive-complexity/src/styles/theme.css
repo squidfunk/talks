@@ -1,0 +1,275 @@
+/*
+ * Copyright (c) 2019 Martin Donath <martin.donath@squidfunk.com>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to
+ * deal in the Software without restriction, including without limitation the
+ * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+ * sell copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+ * IN THE SOFTWARE.
+ */
+
+/* ----------------------------------------------------------------------------
+ * Global
+ * ------------------------------------------------------------------------- */
+
+/* Slide container */
+.reveal {
+  font-family: system-ui;
+  font-size: 2rem;
+  line-height: 1.5;
+  background-color: #1D1D1D;
+  color: #AAAAAA;
+}
+
+/* Align content slides to top-left */
+.reveal .slides .content {
+  text-align: left;
+  top: 0 !important;
+}
+
+/* Arrows */
+.reveal .controls {
+  color: #00E676;
+}
+
+/* Progress bar */
+.reveal .progress {
+  color: #00E676;
+}
+
+/* Progress bar transition */
+.reveal .progress span {
+  transition-timing-function: cubic-bezier(0.075, 0.85, 0.175, 1);
+}
+
+/* Slide number */
+.reveal .slide-number {
+  background: transparent;
+}
+
+/* Slide number link */
+.reveal .slide-number a {
+  text-decoration: none;
+}
+
+/* Columns */
+.reveal .slides .columns {
+  display: flex;
+  align-items: stretch;
+}
+
+/* Column items */
+.reveal .slides .columns > * {
+  margin-top: 0;
+  margin-right: 40px;
+  margin-bottom: 0;
+  flex: 1;
+}
+
+/* Last column */
+.reveal .slides .columns > :last-child {
+  margin-right: 0;
+}
+
+/* ----------------------------------------------------------------------------
+ * Headers
+ * ------------------------------------------------------------------------- */
+
+/* Generic header styles */
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  color: #FFFFFF;
+  letter-spacing: -1.5px;
+  line-height: 1.25;
+}
+
+/* ----------------------------------------------------------------------------
+ * Code
+ * ------------------------------------------------------------------------- */
+
+/* Remove excess whitespace */
+.reveal pre {
+  white-space: normal;
+}
+
+/* Code blocks */
+.reveal code {
+  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+  font-size: 0.65em;
+  white-space: pre;
+  border-radius: 2px;
+}
+
+/* Code language */
+.reveal code:before {
+  content: attr(lang);
+  text-transform: uppercase;
+  float: right;
+  opacity: 0.5;
+}
+
+.reveal mark {
+  background: #2979FF;
+  color: inherit;
+}
+
+/* ----------------------------------------------------------------------------
+ * Body copy
+ * ------------------------------------------------------------------------- */
+
+/* Positive statement */
+.reveal .slides .positive {
+  color: #69f0AE;
+}
+
+/* Negative statement */
+.reveal .slides .negative {
+  color: #FF5252;
+}
+
+/* ------------------------------------------------------------------------- */
+
+/* List item */
+.reveal .slides li {
+  padding-left: 8px;
+}
+
+/* Neutral list item */
+.reveal .slides ul li {
+  list-style-type: "–  ";
+}
+
+/* Positive list item */
+.reveal .slides ul li.positive {
+  list-style-type: "+  ";
+}
+
+/* Negative list item */
+.reveal .slides ul li.negative {
+  list-style-type: "×  ";
+}
+
+/* ------------------------------------------------------------------------- */
+
+/* Link */
+.reveal .slides a {
+  color: #2979FF;
+  background:
+     linear-gradient(
+       to bottom, #2979FF 0%,
+       #2979FF 100%
+     );
+  background-position: 0 100%;
+  background-repeat: repeat-x;
+  background-size: 2px 2px;
+  text-decoration: none;
+  transition:
+    background-size .25s cubic-bezier(0.075, 0.85, 0.175, 1),
+    color .25s;
+}
+
+/* Hovered link */
+.reveal .slides a:hover {
+  background-size: 4px 50px;
+  color: #FFFFFF;
+}
+
+/* ----------------------------------------------------------------------------
+ * Animation: text revelation
+ * ------------------------------------------------------------------------- */
+
+/* Reveal from bottom */
+@keyframes bottom {
+  from {
+    transform: translate3d(0, 100%, 0);
+  }
+}
+
+/* ------------------------------------------------------------------------- */
+
+/* Animation container */
+[data-animation="reveal"] .container {
+  display: inline-block;
+  vertical-align: top;
+  overflow: hidden;
+}
+
+/* Animation */
+[data-animation="reveal"] .animation {
+  display: inline-block;
+  white-space: pre;
+  animation-duration: .8s;
+  animation-timing-function: cubic-bezier(0.075, 0.85, 0.175, 1);
+  animation-fill-mode: both;
+  animation-play-state: paused;
+}
+
+/* ----------------------------------------------------------------------------
+ * Animations
+ * ------------------------------------------------------------------------- */
+
+/* Pause animation for future slides */
+.future .animation,
+.fragment:not(.visible) .animation {
+  animation-play-state: initial;
+  transform: translate3d(0, 100%, 0);
+}
+
+/* Run animation for present and past slides */
+.present .animation,
+.present .fragment.visible .animation,
+.past .animation {
+  animation-name: bottom;
+  animation-play-state: running;
+}
+
+/* Don't run animation on untriggered fragments */
+.present .fragment:not(.visible) .animation {
+  animation-name: initial;
+}
+
+/* ----------------------------------------------------------------------------
+ * Highlighting
+ * ------------------------------------------------------------------------- */
+
+/* Names and tag selectors */
+.hljs-name,
+.hljs-selector-tag {
+  font-weight: normal;
+  color: #FF4592;
+}
+
+/* Attributes and class selectors */
+.hljs-attr,
+.hljs-selector-class,
+.hljs-selector-attr,
+.hljs-selector-id,
+.hljs-selector-pseudo {
+  color: #FFCB6B;
+}
+
+/* Strings */
+.hljs-string {
+  color: #A7DD75;
+}
+
+/* Comment */
+.hljs-comment {
+  color: #716A79;
+}

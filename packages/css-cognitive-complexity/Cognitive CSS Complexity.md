@@ -5,6 +5,7 @@
 - My background
 - Why research CSS?
 - State of research in CSS
+  - Articles
 
 ## Motivation / Problem @2m
 
@@ -15,38 +16,16 @@
 
 ## A brief introduction to CSS @5m
 
-- How do HTML and CSS play together?
-- How do CSS selectors work?
-  - Location
-  - Specificity
 - Cascade and inheritance
   - What is the CSS cascade?
   - What is CSS inheritance?
     - Unintended changes
     - !importants
-  - What is CSS specificity?
-
-> Location and Specificity are the two primary factors how styles are applied
-> We'll leave out inheritance for now to keep things simple
 
 ## A brief introduction to Software Complexity
 
-### in general @5m
-
-- What is complexity (in software)?
-- Why measure complexity?
-- How is complexity measured?
-  - McCabe, Cyclomatic etc.
-  - Cognitive Complexity (vs. computational complexity!)
-  - Always related to branching
-
-> Complexity is a good indicator on how expensive changes to our software are
-
 ### in CSS @10m
 
-- Why can't we apply classical software complexity metrics to CSS?
-- How is CSS complexity currently defined?
-- What are shortcomings of this approach?
 - What are tools I can use?
   - Descriptive statistics
   - Specificity graph

@@ -1,7 +1,7 @@
 {
-  "name": "talks-cognitive-css-complexity",
+  "name": "talks-css-cognitive-complexity",
   "version": "0.0.0",
-  "description": "Materials related to talks I've given",
+  "description": "CSS: Cognitive Complexity",
   "homepage": "https://github.com/squidfunk/talks",
   "bugs": {
     "url": "https://github.com/squidfunk/talks/issues",

@@ -1,0 +1,145 @@
+<!--
+  Copyright (c) 2019 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cognitive CSS Complexity</title>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <!-- Empty slide -->
+        <section></section>
+
+        <!-- A section header -->
+        <section>
+          <h2>Lorem ipsum dolor sit amet</h2>
+        </section>
+
+        <!-- A slide with body copy -->
+        <section class="content">
+          <h2>A slide with body copy</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+            mollis id diam eu tincidunt. Quisque sed sagittis augue. Nunc
+            sollicitudin lectus augue, in porta arcu placerat in. In hac
+            habitasse platea dictumst. Integer rhoncus magna nisi, vitae
+            consequat sapien molestie non. Phasellus id facilisis odio.
+            Donec <a href="#">cursus lectus vitae accumsan sodales</a>.
+          </p>
+        </section>
+
+        <!-- A slide with an ordered list -->
+        <section class="content">
+          <h2>A slide with an ordered list</h2>
+          <ol>
+            <li>Lorem ipsum dolor sit amet.</li>
+            <li>Nullam mollis id diam eu tincidunt.</li>
+            <li>Quisque sed sagittis augue</li>
+            <li>Nunc sollicitudin lectus augue</li>
+          </ol>
+        </section>
+
+        <!-- A slide with an unordered list -->
+        <section class="content">
+          <h2>A slide with an unordered list</h2>
+          <ul>
+            <li>Lorem ipsum dolor sit amet.</li>
+            <li>Nullam mollis id diam eu tincidunt.</li>
+          </ul>
+        </section>
+
+        <!-- A slide with a pro and contra list -->
+        <section class="content">
+          <h2>A slide with a pro and contra list</h2>
+          <ul>
+            <li class="positive">Lorem ipsum dolor sit amet.</li>
+            <li class="positive">Nullam mollis id diam eu tincidunt.</li>
+          </ul>
+          <ul>
+            <li class="negative">Quisque sed sagittis augue</li>
+            <li class="negative">Nunc sollicitudin lectus augue</li>
+          </ul>
+        </section>
+
+        <!-- A slide with code -->
+        <section class="content">
+          <h2>A slide with code</h2>
+          <p>Lorem ipsum dolor sit amet</p>
+          <pre>
+            <code lang="html" class="html">
+              <header>
+                <ul>
+                  <li><a href="#">...</a></li>
+                  <li><a href="#">...</a></li>
+                </ul>
+              </header>
+            </code>
+          </pre>
+          <pre>
+            <code lang="css" class="css">
+              a { ... }                      /* All links */
+              a:visited { ... }              /* All visited links */
+              header a:visited { ... }       /* All visited header links */
+            </code>
+          </pre>
+        </section>
+
+        <!-- A slide with code (2 column layout) -->
+        <section class="content">
+          <h2>A slide with code (2 column layout)</h2>
+          <p>Lorem ipsum dolor sit amet</p>
+          <div class="columns">
+            <pre>
+              <code lang="html" class="html">
+                <header>
+                  <ul>
+                    <li><a href="#">...</a></li>
+                    <li><a href="#">...</a></li>
+                  </ul>
+                </header>
+              </code>
+            </pre>
+            <pre>
+              <code lang="css" class="css">
+                a.header-link {
+                  color: white;
+                }
+                ul li:first-child a {
+                  background-color: white;
+                }
+                header a {
+                  background-color: grey;
+                  color: black;
+                }
+              </code>
+            </pre>
+          </div>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,432 @@
+<!--
+  Copyright (c) 2019 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CSS: Cognitive Complexity</title>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <!-- Title slide -->
+        <section></section>
+
+        <!-- Hi, I'm @squidfunk -->
+        <section></section>
+
+        <!-- Yes. People are researching CSS -->
+        <section></section>
+
+        <!-- I like CSS -->
+        <section>
+          <h2 data-animation="reveal">I like CSS</h2>
+        </section>
+
+        <!-- Easy to Learn, Hard to Master -->
+        <section class="content">
+          <h2 data-animation="reveal">Easy to Learn, Hard to Master</h2>
+          <ul>
+            <li class="fragment positive">
+              Amazingly simple to read and write
+            </li>
+            <li class="fragment positive">
+              Flexible and unopinionated architecture
+            </li>
+          </ul>
+          <ul>
+            <li class="fragment negative">
+              Hard to control when code base is growing
+            </li>
+            <li class="fragment negative">
+              Complexity must be managed strategically
+            </li>
+          </ul>
+        </section>
+
+        <!-- Complexity -->
+        <section class="content">
+          <h2 data-animation="reveal">Complexity</h2>
+          <div class="fragment">
+            <h3 data-animation="reveal">Computational Complexity</h3>
+            <p>
+              What resources (space and time) are necessary to solve a problem?
+              <br/>
+              <span class="fragment">
+                If computational complexity increases,
+                <b class="negative">performance</b> decreases
+              </span>
+            </p>
+          </div>
+          <div class="fragment">
+            <h3 data-animation="reveal">Cognitive Complexity</h3>
+            <p>
+              How difficult is the code to read and understand?
+              <br/>
+              <span class="fragment">
+                If cognitive complexity increases,
+                <b class="negative">productivity</b> decreases
+              </span>
+            </p>
+          </div>
+        </section>
+
+        <!-- Scope and Precedence -->
+        <section>
+          <h2 data-animation="reveal">Scope and Precedence</h2>
+        </section>
+
+        <!-- Scope -->
+        <section class="content">
+          <h2 data-animation="reveal">Scope</h2>
+          <p class="fragment">The number of elements matched by a rule</p>
+          <div class="fragment">
+            <h3 data-animation="reveal">Example</h3>
+            <pre>
+              <code lang="css" class="css">
+                /* All links */
+                a { ... }
+
+                /* All visited links */
+                a:visited { ... }
+
+                /* All visited header links */
+                header a:visited { ... }
+              </code>
+            </pre>
+          </div>
+        </section>
+
+        <!-- Precedence -->
+        <section class="content">
+          <h2 data-animation="reveal">Precedence</h2>
+          <p class="fragment">
+            The ordering of rules, in case multiple rules match an element
+          </p>
+          <div class="fragment">
+            <h3 data-animation="reveal">Algorithm</h3>
+            <ol>
+              <li>Order rules by specificity</li>
+              <li class="fragment">Order rules by location</li>
+            </ol>
+          </div>
+        </section>
+
+        <!-- Specificity -->
+        <section class="content">
+          <h2 data-animation="reveal">Specificity</h2>
+          <p class="fragment">
+            A quadruple of numbers (e.g. [0, 0, 1, 1]) that induces an ordering
+            on rules
+          </p>
+          <div class="fragment">
+            <h3 data-animation="reveal">Calculation</h3>
+            <ol>
+              <li>1 if inline declaration, 0 otherwise</li>
+              <li class="fragment">Number of id selectors</li>
+              <li class="fragment">
+                Number of (pseudo-)class and attribute selectors
+              </li>
+              <li class="fragment">
+                Number of (pseudo-)element selectors
+              </li>
+            </ol>
+          </div>
+        </section>
+
+        <!-- Specificity -->
+        <section class="content">
+          <h2>Specificity</h2>
+          <p>
+            A quadruple of numbers (e.g. [0, 0, 1, 1]) that induces an ordering
+            on rules
+          </p>
+          <h3 data-animation="reveal">Example</h3>
+          <pre>
+            <code lang="css" class="css">
+              /* Specificity: <span class="fragment">[0, 0, 1, 3]</span> */
+              nav a:hover::before { ... }
+
+              /* Specificity: <span class="fragment">[0, 1, 1, 2]</span> */
+              ul#primary-nav li.active { ... }
+            </code>
+          </pre>
+          <p class="fragment">
+            Try the specificity calculator at
+            <a href="https://specificity.keegan.st/">
+              specificity.keegan.st
+            </a>
+          </p>
+        </section>
+
+        <!-- Scope and Precedence -->
+        <section class="content">
+          <h2 data-animation="reveal">Scope and Precedence</h2>
+          <p class="fragment">
+            A rule expresses scope and precedence at the same time
+          </p>
+          <div class="fragment">
+            <h3 data-animation="reveal">Example</h3>
+            <pre>
+              <code lang="css" class="css">
+                /* Large scope, low precedence */
+                a { ... }
+
+                /* Medium scope, medium precedence */
+                a.external { ... }
+
+                /* Small scope, high precedence */
+                header a.external { ... }
+              </code>
+            </pre>
+          </div>
+        </section>
+
+        <!-- What Could Possibly Go Wrong? -->
+        <section class="content">
+          <h2 data-animation="reveal">What Could Possibly Go Wrong?</h2>
+          <div class="fragment">
+            <p>What's the background and text color of the first link?</p>
+            <div class="columns">
+              <pre>
+                <code lang="html" class="html">
+                  <header>
+                    <ul>
+                      <li>
+                        <a class="external">...</a>
+                      </li>
+                      <li>
+                        <a class="external">...</a>
+                      </li>
+                    </ul>
+                  </header>
+                </code>
+              </pre>
+              <pre>
+                <code lang="css" class="css">
+                  a.external {
+                    color: white;
+                  }
+                  ul li:first-child a {
+                    background-color: white;
+                  }
+                  header a {
+                    background-color: grey;
+                    color: black;
+                  }
+                </code>
+              </pre>
+            </div>
+          </div>
+        </section>
+
+        <!-- What Could Possibly Go Wrong? -->
+        <section class="content">
+          <h2>What Could Possibly Go Wrong?</h2>
+          <p>What's the background and text color of the first link?</p>
+          <div class="columns">
+            <pre>
+              <code lang="html" class="html">
+                <header>
+                  <ul>
+                    <li>
+                      <a class="external">...</a>
+                    </li>
+                    <li>
+                      <a class="external">...</a>
+                    </li>
+                  </ul>
+                </header>
+              </code>
+            </pre>
+            <pre>
+              <code lang="css" class="css">
+                a.external {
+                  <mark>color: white;</mark>
+                } /* [0, 0, 1, 1] */
+                ul li:first-child a {
+                  <mark>background-color: white;</mark>
+                } /* [0, 0, 1, 3] */
+                header a {
+                  background-color: grey;
+                  color: black;
+                } /* [0, 0, 0, 2] */
+              </code>
+            </pre>
+          </div>
+        </section>
+
+        <!-- TODO: -->
+        <section>Meme slide</section>
+
+        <!-- TODO: -->
+        <section>Explanation slide</section>
+
+        <!-- Wait, there is more -->
+        <section class="content">
+          <h2 data-animation="reveal">Wait, there is more</h2>
+          <p class="fragment">
+            Other factors that add to cognitive complexity
+          </p>
+          <div class="fragment">
+            <h3 data-animation="reveal">An incomplete list</h3>
+            <ul>
+              <li>Inheritance</li>
+              <li class="fragment">
+                Conditional rules (media and feature queries)
+              </li>
+              <li class="fragment">
+                Browser support
+              </li>
+              <li class="fragment">
+                Browser bugs
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Complexity Management -->
+        <section>
+          <h2 data-animation="reveal">Complexity Management</h2>
+        </section>
+
+        <!-- Organisation Systems -->
+        <section class="content">
+          <h2 data-animation="reveal">Organisation Systems</h2>
+          <p class="fragment">
+            <b>BEM</b>, OOCSS, SMACSS, <b>Atomic CSS</b>, ...
+          </p>
+          <ul>
+            <li class="fragment positive">
+              Guidance for large teams and code bases
+            </li>
+            <li class="fragment positive">
+              Help keeping complexity low
+            </li>
+          </ul>
+          <ul>
+            <li class="fragment negative">
+              Scope and Precedence issues still arise
+            </li>
+            <li class="fragment negative">
+              Weird situations when followed religiously
+            </li>
+          </ul>
+        </section>
+
+        <!-- Static Analysis -->
+        <section class="content">
+          <h2 data-animation="reveal">Static Analysis</h2>
+          <p class="fragment">
+            Descriptive statistics (#, avg, min, max)
+          </p>
+          <div class="fragment">
+            <h3 data-animation="reveal">Metrics</h3>
+            <ul>
+              <li>Lines of code</li>
+              <li class="fragment">
+                Selectors per rule, declarations per rule
+              </li>
+              <li class="fragment">
+                Number of colors, font sizes, box shadows, ...
+              </li>
+              <li class="fragment">
+                ...
+              </li>
+            </ul>
+          </div>
+          <p class="fragment">
+            Try the static analyser at
+            <a href="https://www.projectwallace.com/">
+              projectwallace.com
+            </a>
+          </p>
+        </section>
+
+        <!-- Static Analysis -->
+        <section class="content">
+          <h2>Static Analysis</h2>
+          <p>
+            Descriptive statistics (#, avg, min, max)
+          </p>
+          <ul>
+            <li class="positive">
+              Can give a general idea of code base health
+            </li>
+            <li class="fragment positive">
+              Good for deduplication (colors, shadows, etc.)
+            </li>
+          </ul>
+          <ul>
+            <li class="fragment negative">
+              Mistakenly called <b>complexity analysis</b> (even in papers)
+            </li>
+            <li class="fragment negative">
+              Too coarse for complexity management
+            </li>
+          </ul>
+        </section>
+
+        <!-- Specificity Graph -->
+        <section class="content">
+          <h2 data-animation="reveal">Specificity Graph</h2>
+          <p class="fragment">
+            Visualisation of precedence (location and specificity)
+          </p>
+          <div class="fragment">
+            <h3 data-animation="reveal">Example</h3>
+            <pre>
+              <code lang="css" class="css">
+                /* Large scope, low precedence */
+                a { ... }
+
+                /* Medium scope, medium precedence */
+                a.external { ... }
+
+                /* Small scope, high precedence */
+                header a.external { ... }
+              </code>
+            </pre>
+          </div>
+        </section>
+
+        <!-- Specificity Graph -->
+        <section class="content">
+          <h2>Specificity Graph</h2>
+          <p>
+            Visualisation of precedence (location and specificity)
+          </p>
+          <div>
+            <h3 data-animation="reveal">Generic → Specific</h3>
+            <ul>
+              <li class="fragment">Scope: Large → Small</li>
+              <li class="fragment">Precedence: Low → High</li>
+            </ul>
+          </div>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>
