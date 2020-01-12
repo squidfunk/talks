@@ -20,8 +20,8 @@
  * IN THE SOFTWARE.
  */
 
-import * as HtmlWebpackPlugin from "html-webpack-plugin"
-import * as MiniCssExtractPlugin from "mini-css-extract-plugin"
+import HtmlWebpackPlugin from "html-webpack-plugin"
+import MiniCssExtractPlugin from "mini-css-extract-plugin"
 import * as path from "path"
 import { Configuration } from "webpack"
 

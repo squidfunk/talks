@@ -20,9 +20,12 @@
  * IN THE SOFTWARE.
  */
 
-import * as escape from "escape-html"
-import * as Highlight from "highlight.js"
+import escape from "escape-html"
+import * as Highlight from "highlight.js/lib/highlight"
 import * as Reveal from "reveal.js"
+
+import XML from "highlight.js/lib/languages/xml"
+import CSS from "highlight.js/lib/languages/css"
 
 import "highlight.js/styles/dracula.css"
 import "reveal.js/css/reveal.css"
@@ -108,6 +111,10 @@ Reveal.initialize({
   transition: "fade",
   transitionSpeed: "fast"
 })
+
+/* Register languages */
+Highlight.registerLanguage("html", XML)
+Highlight.registerLanguage("css", CSS)
 
 /* Initialize syntax highlighting */
 Highlight.initHighlightingOnLoad()
