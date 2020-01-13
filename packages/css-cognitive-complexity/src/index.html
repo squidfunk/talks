@@ -32,27 +32,34 @@
       <div class="slides">
 
         <!-- Title slide -->
-        <section></section>
+        <section>TBD</section>
 
         <!-- Hi, I'm @squidfunk -->
         <section class="content">
           <h2 data-animation="reveal">
             Hi, I'm @squidfunk
           </h2>
+          <img src="assets/images/squidfunk.jpg" class="photo" />
           <ul>
             <li class="fragment">
               10+ years of debugging and fixing broken layouts
             </li>
             <li class="fragment">
-              Likes to build products front to back
+              I like to build products front to back
             </li>
             <li class="fragment">
-              On the quest to <em>solving</em> cross-browser layout
+              I'm on the quest to <em>solving</em> cross-browser layout
             </li>
             <li class="fragment">
-              Actively researching (i.e. deconstructing) CSS
+              I'm actively researching (i.e. deconstructing) CSS
             </li>
           </ul>
+          <p class="fragment">
+            This presentation is located at:<br />
+            <a href="https://squidfunk.github.io/talks/css-cognitive-complexity">
+              squidfunk.github.io/talks/css-cognitive-complexity
+            </a>
+          </p>
         </section>
 
         <!-- Yes. People are researching CSS -->
@@ -148,10 +155,10 @@
                   <header>
                     <ul>
                       <li>
-                        <a class="external">...</a>
+                        <a class="ext">...</a>
                       </li>
                       <li>
-                        <a class="external">...</a>
+                        <a class="ext">...</a>
                       </li>
                     </ul>
                   </header>
@@ -159,7 +166,7 @@
               </pre>
               <pre>
                 <code lang="css" class="css">
-                  a.external {
+                  a.ext {
                     color: white;
                   }
                   ul li:first-child a {
@@ -185,10 +192,10 @@
                 <header>
                   <ul>
                     <li>
-                      <a class="external">...</a>
+                      <a class="ext">...</a>
                     </li>
                     <li>
-                      <a class="external">...</a>
+                      <a class="ext">...</a>
                     </li>
                   </ul>
                 </header>
@@ -196,11 +203,11 @@
             </pre>
             <pre>
               <code lang="css" class="css">
-                a.external {
-                  color: white;
+                a.ext {
+                  color: <b>white</b>;
                 }
                 ul li:first-child a {
-                  background-color: white;
+                  background-color: <b>white</b>;
                 }
                 header a {
                   <del>background-color: grey;</del>
@@ -209,6 +216,17 @@
               </code>
             </pre>
           </div>
+        </section>
+
+        <!-- Agenda -->
+        <section class="content">
+          <h2 data-animation="reveal">Agenda</h2>
+          <ol>
+            <li class="fragment">Scope and Precedence</li>
+            <li class="fragment">Complexity Management</li>
+            <li class="fragment">Static Analysis</li>
+            <li class="fragment">Dynamic Analysis</li>
+          </ol>
         </section>
 
         <!-- Scope and Precedence -->
@@ -229,11 +247,11 @@
                 /* All links */
                 a { ... }
 
-                /* All visited links */
-                a:visited { ... }
+                /* All external links */
+                a.ext { ... }
 
-                /* All visited header links */
-                header a:visited { ... }
+                /* All external header links */
+                header a.ext { ... }
               </code>
             </pre>
           </div>
@@ -260,13 +278,14 @@
         <section class="content">
           <h2 data-animation="reveal">Specificity</h2>
           <p class="fragment">
-            A quadruple of numbers (e.g. [0, 0, 1, 1]) that induces an ordering
-            on rules
+            A quadruple of numbers (e.g. [0, 0, 1, 1]) giving a rule weight
           </p>
           <div class="fragment">
             <h3 data-animation="reveal">Calculation</h3>
             <ol>
-              <li>1 if inline declaration, 0 otherwise</li>
+              <li style="opacity: 0.5">
+                1 if inline declaration, 0 otherwise
+              </li>
               <li class="fragment">Number of id selectors</li>
               <li class="fragment">
                 Number of (pseudo-)class and attribute selectors
@@ -282,8 +301,7 @@
         <section class="content">
           <h2>Specificity</h2>
           <p>
-            A quadruple of numbers (e.g. [0, 0, 1, 1]) that induces an ordering
-            on rules
+            A quadruple of numbers (e.g. [0, 0, 1, 1]) giving a rule weight
           </p>
           <h3 data-animation="reveal">Example</h3>
           <pre>
@@ -317,50 +335,12 @@
                 a { ... }
 
                 /* Medium scope, medium precedence */
-                a.external { ... }
+                a.ext { ... }
 
                 /* Small scope, high precedence */
-                header a.external { ... }
+                header a.ext { ... }
               </code>
             </pre>
-          </div>
-        </section>
-
-        <!-- What Could Possibly Go Wrong? -->
-        <section class="content">
-          <h2 data-animation="reveal">What Could Possibly Go Wrong?</h2>
-          <div class="fragment">
-            <p>What's the background and text color of the first link?</p>
-            <div class="columns">
-              <pre>
-                <code lang="html" class="html">
-                  <header>
-                    <ul>
-                      <li>
-                        <a class="external">...</a>
-                      </li>
-                      <li>
-                        <a class="external">...</a>
-                      </li>
-                    </ul>
-                  </header>
-                </code>
-              </pre>
-              <pre>
-                <code lang="css" class="css">
-                  a.external {
-                    color: white;
-                  }
-                  ul li:first-child a {
-                    background-color: white;
-                  }
-                  header a {
-                    background-color: grey;
-                    color: black;
-                  }
-                </code>
-              </pre>
-            </div>
           </div>
         </section>
 
@@ -374,10 +354,10 @@
                 <header>
                   <ul>
                     <li>
-                      <a class="external">...</a>
+                      <a class="ext">...</a>
                     </li>
                     <li>
-                      <a class="external">...</a>
+                      <a class="ext">...</a>
                     </li>
                   </ul>
                 </header>
@@ -385,11 +365,11 @@
             </pre>
             <pre>
               <code lang="css" class="css">
-                a.external {
-                  color: white;
+                a.ext {
+                  color: <b>white</b>;
                 } /* [0, 0, 1, 1] */
                 ul li:first-child a {
-                  background-color: white;
+                  background-color: <b>white</b>;
                 } /* [0, 0, 1, 3] */
                 header a {
                   <del>background-color: grey;</del>
@@ -400,11 +380,18 @@
           </div>
         </section>
 
-        <!-- TODO: -->
-        <section>Meme slide</section>
+        <!-- Still not convinced? -->
+        <section class="content">
+          <h2 data-animation="reveal">Still not convinced?</h2>
+          <div class="fragment">
+            <p>Maximum number of matched selectors <b>per element</b></p>
+            <img src="assets/images/selectors-max.svg" width="75%" />
+          </div>
+        </section>
 
-        <!-- TODO: -->
-        <section>Explanation slide</section>
+        <!-- This is fine -->
+        <section data-background-image="assets/images/this-is-fine.jpg">
+        </section>
 
         <!-- Wait, there is more -->
         <section class="content">
@@ -415,12 +402,12 @@
           <div class="fragment">
             <h3 data-animation="reveal">An incomplete list</h3>
             <ul>
-              <li>Inheritance</li>
+              <li>Inherited properties</li>
               <li class="fragment">
                 Conditional rules (media and feature queries)
               </li>
               <li class="fragment">
-                Browser support
+                Browser compatibility
               </li>
               <li class="fragment">
                 Browser bugs
@@ -445,24 +432,53 @@
               Guidance for large teams and code bases
             </li>
             <li class="fragment positive">
-              Help keeping complexity low
+              Help keeping cognitive complexity low
             </li>
           </ul>
           <ul>
             <li class="fragment negative">
-              Scope and Precedence issues still arise
+              Weird situations when followed religiously
             </li>
             <li class="fragment negative">
-              Weird situations when followed religiously
+              Scope and Precedence issues still arise
+            </li>
+          </ul>
+        </section>
+
+        <!-- Style Boundaries -->
+        <section class="content">
+          <h2 data-animation="reveal">Style Boundaries</h2>
+          <p class="fragment">
+            <b>Web Components</b>, CSS Modules (CSS-in-JS)
+          </p>
+          <ul>
+            <li class="fragment positive">
+              Mitigate Scope and Precedence issues
+            </li>
+            <li class="fragment positive">
+              Reduce or prevent accidental leakage
+            </li>
+          </ul>
+          <ul>
+            <li class="fragment negative">
+              Mixing with global styles is cumbersome
+            </li>
+            <li class="fragment negative">
+              Come with caveats (e.g. compatibility, duplication, ...)
             </li>
           </ul>
         </section>
 
         <!-- Static Analysis -->
-        <section class="content">
+        <section>
           <h2 data-animation="reveal">Static Analysis</h2>
+        </section>
+
+        <!-- Style Statistics -->
+        <section class="content">
+          <h2 data-animation="reveal">Style Statistics</h2>
           <p class="fragment">
-            Descriptive statistics (#, avg, min, max)
+            Analyse statistical properties of styles (#, avg, min, max)
           </p>
           <div class="fragment">
             <h3 data-animation="reveal">Metrics</h3>
@@ -487,11 +503,11 @@
           </p>
         </section>
 
-        <!-- Static Analysis -->
+        <!-- Style Statistics -->
         <section class="content">
-          <h2>Static Analysis</h2>
+          <h2>Style Statistics</h2>
           <p>
-            Descriptive statistics (#, avg, min, max)
+            Analyse statistical properties of styles (#, avg, min, max)
           </p>
           <ul>
             <li class="positive">
@@ -503,7 +519,7 @@
           </ul>
           <ul>
             <li class="fragment negative">
-              Mistakenly called <b>complexity analysis</b> (even in papers)
+              Often (mistakenly) called <b>complexity analysis</b>
             </li>
             <li class="fragment negative">
               Too coarse for complexity management
@@ -515,38 +531,110 @@
         <section class="content">
           <h2 data-animation="reveal">Specificity Graph</h2>
           <p class="fragment">
-            Visualisation of precedence (location and specificity)
+            Visualise precedence (location and specificity)
           </p>
           <div class="fragment">
-            <h3 data-animation="reveal">Example</h3>
-            <pre>
-              <code lang="css" class="css">
-                /* Large scope, low precedence */
-                a { ... }
-
-                /* Medium scope, medium precedence */
-                a.external { ... }
-
-                /* Small scope, high precedence */
-                header a.external { ... }
-              </code>
-            </pre>
+            <div class="columns">
+              <pre>
+                <code lang="css" class="css">
+                  a { ... }
+                  header a { ... }
+                  nav ul a { ... }
+                  header ul li a { ... }
+                  a.ext { ... }
+                  nav a.ext { ... }
+                  a.ext:visited { ... }
+                  #home header a { ... }
+                </code>
+              </pre>
+              <img
+                src="assets/images/specificity-expectation.svg"
+                style="flex: 1.5"
+              />
+            </div>
+            <p>How the specificity graph <b>should look</b></p>
           </div>
         </section>
 
         <!-- Specificity Graph -->
         <section class="content">
           <h2>Specificity Graph</h2>
-          <p>
-            Visualisation of precedence (location and specificity)
-          </p>
-          <div>
-            <h3 data-animation="reveal">Generic → Specific</h3>
-            <ul>
-              <li class="fragment">Scope: Large → Small</li>
-              <li class="fragment">Precedence: Low → High</li>
-            </ul>
+          <p>Visualise precedence (location and specificity)</p>
+          <div class="columns">
+            <pre>
+              <code lang="css" class="css">
+                a { ... }
+                a.ext { ... }
+                a.ext:visited { ... }
+                header a { ... }
+                #home header a { ... }
+                header ul li a { ... }
+                nav ul a { ... }
+                nav a.ext { ... }
+              </code>
+            </pre>
+            <img
+              src="assets/images/specificity-reality.svg"
+              style="flex: 1.5"
+            />
           </div>
+          <p>How the specificity graph <b>actually looks</b></p>
+        </section>
+
+        <!-- Specificity Graph -->
+        <section class="content">
+          <h2>Specificity Graph</h2>
+          <p>Visualise precedence (location and specificity)</p>
+          <div class="columns">
+            <pre>
+              <code lang="css" class="css">
+                a { ... }
+                a.ext { ... }
+                a.ext:visited { ... }
+                header a { ... }
+                #home header a { ... }
+                header ul li a { ... }
+                nav ul a { ... }
+                nav a.ext { ... }
+              </code>
+            </pre>
+            <img
+              src="assets/images/specificity-component.svg"
+              style="flex: 1.5"
+            />
+          </div>
+          <p>
+            How the specificity graph for a <b>component architecture</b> looks
+          </p>
+        </section>
+
+        <!-- Dynamic Analysis -->
+        <section>
+          <h2 data-animation="reveal">Dynamic Analysis</h2>
+        </section>
+
+        <!-- Specificity Surface -->
+        <section class="content">
+          <h2 data-animation="reveal">Specificity Surface</h2>
+          <p class="fragment">
+            Visualise precedence <b>per element</b> (location and specificity)
+          </p>
+          <div class="fragment">
+            <h3 data-animation="reveal">Algorithm</h3>
+            <ol>
+              <li>Match each rule with each element of a document</li>
+              <li class="fragment">Sort matches by precedence (low to high)</li>
+              <li class="fragment">Identify (and fix) drops in specificity</li>
+            </ol>
+          </div>
+        </section>
+
+        <!-- Specificity Surface -->
+        <section class="content">
+          <h2>Specificity Surface</h2>
+          <p>
+            Visualise precedence <b>per element</b> (location and specificity)
+          </p>
         </section>
       </div>
     </div>

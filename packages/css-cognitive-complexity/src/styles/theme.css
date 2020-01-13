@@ -189,14 +189,23 @@
 /* ------------------------------------------------------------------------- */
 
 /* General marker */
-.reveal mark {
+.reveal .slides mark {
   background: #2979FF;
   color: inherit;
 }
 
 /* Deletion marker */
-.reveal del {
+.reveal .slides del {
   opacity: 0.5;
+}
+
+/* ------------------------------------------------------------------------- */
+
+/* Photo */
+.reveal .slides .photo {
+  width: 200px;
+  border-radius: 100%;
+  float: right;
 }
 
 /* ----------------------------------------------------------------------------
