@@ -107,6 +107,11 @@ export default (_env: never, args: Configuration): Configuration => {
     ],
 
     /* Source maps */
-    devtool: "source-map"
+    devtool: "source-map",
+
+    /* Development server */
+    devServer: {
+      contentBase: "src"
+    }
   }
 }

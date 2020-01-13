@@ -35,10 +35,54 @@
         <section></section>
 
         <!-- Hi, I'm @squidfunk -->
-        <section></section>
+        <section class="content">
+          <h2 data-animation="reveal">
+            Hi, I'm @squidfunk
+          </h2>
+          <ul>
+            <li class="fragment">
+              10+ years of debugging and fixing broken layouts
+            </li>
+            <li class="fragment">
+              Likes to build products front to back
+            </li>
+            <li class="fragment">
+              On the quest to <em>solving</em> cross-browser layout
+            </li>
+            <li class="fragment">
+              Actively researching (i.e. deconstructing) CSS
+            </li>
+          </ul>
+        </section>
 
         <!-- Yes. People are researching CSS -->
-        <section></section>
+        <section class="content">
+          <h2 data-animation="reveal">
+            Yes. People are researching CSS
+          </h2>
+          <ul style="font-size: 0.5em">
+            <li>2018 – Automated Repair of Mobile Friendly Problems in Web Pages</li>
+            <li>2017 – Machine Learning and Evolutionary Computing for GUI-based Regression Testing</li>
+            <li>2017 – XFIX - An Automated Tool for the Repair of Layout Cross Browser Issues</li>
+            <li>2016 – Automated Reasoning for Web Page Layout</li>
+            <li>2016 – Defect Prediction for Cascading Style Sheets</li>
+            <li>2016 – Detecting and Localizing Visual Inconsistencies in Web Applications</li>
+            <li>2016 – Using Visual Symptoms for Debugging Presentation Failures in Web Applications</li>
+            <li>2015 – Code Smells in Cascading Style Sheets – An Empirical Study and a Predictive Model</li>
+            <li>2015 – Detecting Redundant CSS Rules in HTML5 Applications - A Tree Rewriting Approach</li>
+            <li>2015 – Detection and Localization of HTML Presentation Failures Using Computer Vision-Based Techniques</li>
+            <li>2015 – Tool Support for Cascading Style Sheets' Complexity Metrics</li>
+            <li>2014 – Automated Refactoring for Size Reduction of CSS Style Sheets</li>
+            <li>2014 – Discovering Refactoring Opportunities in Cascading Style Sheets</li>
+            <li>2014 – Finding HTML Presentation Failures Using Image Comparison Techniques</li>
+            <li>2013 – Visualizing Change Impact of Cascading Style Sheets</li>
+            <li>2012 – Automated Analysis of CSS Rules to Support Style Maintenance</li>
+            <li>2012 – On the Analysis of Cascading Style Sheets</li>
+            <li>2010 – CSS Code Quality - A Metric for Abstractness</li>
+            <li>2009 – Complexity Metrics for CSS</li>
+            <li>...</li>
+          </ul>
+        </section>
 
         <!-- I like CSS -->
         <section>
@@ -93,6 +137,80 @@
           </div>
         </section>
 
+        <!-- What Could Possibly Go Wrong? -->
+        <section class="content">
+          <h2 data-animation="reveal">What Could Possibly Go Wrong?</h2>
+          <div class="fragment">
+            <p>What's the background and text color of the first link?</p>
+            <div class="columns">
+              <pre>
+                <code lang="html" class="html">
+                  <header>
+                    <ul>
+                      <li>
+                        <a class="external">...</a>
+                      </li>
+                      <li>
+                        <a class="external">...</a>
+                      </li>
+                    </ul>
+                  </header>
+                </code>
+              </pre>
+              <pre>
+                <code lang="css" class="css">
+                  a.external {
+                    color: white;
+                  }
+                  ul li:first-child a {
+                    background-color: white;
+                  }
+                  header a {
+                    background-color: grey;
+                    color: black;
+                  }
+                </code>
+              </pre>
+            </div>
+          </div>
+        </section>
+
+        <!-- What Could Possibly Go Wrong? -->
+        <section class="content">
+          <h2>What Could Possibly Go Wrong?</h2>
+          <p>What's the background and text color of the first link?</p>
+          <div class="columns">
+            <pre>
+              <code lang="html" class="html">
+                <header>
+                  <ul>
+                    <li>
+                      <a class="external">...</a>
+                    </li>
+                    <li>
+                      <a class="external">...</a>
+                    </li>
+                  </ul>
+                </header>
+              </code>
+            </pre>
+            <pre>
+              <code lang="css" class="css">
+                a.external {
+                  color: white;
+                }
+                ul li:first-child a {
+                  background-color: white;
+                }
+                header a {
+                  <del>background-color: grey;</del>
+                  <del>color: black;</del>
+                }
+              </code>
+            </pre>
+          </div>
+        </section>
+
         <!-- Scope and Precedence -->
         <section>
           <h2 data-animation="reveal">Scope and Precedence</h2>
@@ -101,7 +219,9 @@
         <!-- Scope -->
         <section class="content">
           <h2 data-animation="reveal">Scope</h2>
-          <p class="fragment">The number of elements matched by a rule</p>
+          <p class="fragment">
+            The elements (i.e. subtrees) a rule applies to
+          </p>
           <div class="fragment">
             <h3 data-animation="reveal">Example</h3>
             <pre>
@@ -129,7 +249,9 @@
             <h3 data-animation="reveal">Algorithm</h3>
             <ol>
               <li>Order rules by specificity</li>
-              <li class="fragment">Order rules by location</li>
+              <li class="fragment">
+                Order rules with same specificity by location
+              </li>
             </ol>
           </div>
         </section>
@@ -264,14 +386,14 @@
             <pre>
               <code lang="css" class="css">
                 a.external {
-                  <mark>color: white;</mark>
+                  color: white;
                 } /* [0, 0, 1, 1] */
                 ul li:first-child a {
-                  <mark>background-color: white;</mark>
+                  background-color: white;
                 } /* [0, 0, 1, 3] */
                 header a {
-                  background-color: grey;
-                  color: black;
+                  <del>background-color: grey;</del>
+                  <del>color: black;</del>
                 } /* [0, 0, 0, 2] */
               </code>
             </pre>

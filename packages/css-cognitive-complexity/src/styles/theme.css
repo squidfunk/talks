@@ -29,8 +29,9 @@
   font-family: system-ui;
   font-size: 2rem;
   line-height: 1.5;
-  background-color: #1D1D1D;
+  background-color: #1C1B25;
   color: #AAAAAA;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* Align content slides to top-left */
@@ -95,7 +96,7 @@
 .reveal h5,
 .reveal h6 {
   color: #FFFFFF;
-  letter-spacing: -1.5px;
+  letter-spacing: -2px;
   line-height: 1.25;
 }
 
@@ -122,11 +123,6 @@
   text-transform: uppercase;
   float: right;
   opacity: 0.5;
-}
-
-.reveal mark {
-  background: #2979FF;
-  color: inherit;
 }
 
 /* ----------------------------------------------------------------------------
@@ -169,11 +165,11 @@
 
 /* Link */
 .reveal .slides a {
-  color: #2979FF;
+  color: #448AFF;
   background:
      linear-gradient(
-       to bottom, #2979FF 0%,
-       #2979FF 100%
+       to bottom, #448AFF 0%,
+       #448AFF 100%
      );
   background-position: 0 100%;
   background-repeat: repeat-x;
@@ -188,6 +184,19 @@
 .reveal .slides a:hover {
   background-size: 4px 50px;
   color: #FFFFFF;
+}
+
+/* ------------------------------------------------------------------------- */
+
+/* General marker */
+.reveal mark {
+  background: #2979FF;
+  color: inherit;
+}
+
+/* Deletion marker */
+.reveal del {
+  opacity: 0.5;
 }
 
 /* ----------------------------------------------------------------------------
@@ -208,6 +217,8 @@
   display: inline-block;
   vertical-align: top;
   overflow: hidden;
+  margin-right: -2px;
+  padding-right: 2px;
 }
 
 /* Animation */
