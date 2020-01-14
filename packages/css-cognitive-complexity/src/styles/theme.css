@@ -40,6 +40,11 @@
   top: 0 !important;
 }
 
+/* Reduce bottom margin */
+.reveal .slides .cover > * {
+  margin: .25em 0;
+}
+
 /* Arrows */
 .reveal .controls {
   color: #00E676;
@@ -98,11 +103,6 @@
   color: #FFFFFF;
   letter-spacing: -2px;
   line-height: 1.25;
-}
-
-/* Reduce bottom margin */
-.reveal .cover > * {
-  margin: .25em 0;
 }
 
 /* ----------------------------------------------------------------------------
