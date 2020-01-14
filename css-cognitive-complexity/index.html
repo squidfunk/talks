@@ -1,0 +1,706 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>The Cognitive Complexity of CSS</title>
+  <link href="main.386db4cba5d282f47e10.css" rel="stylesheet"></head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        
+        <section class="cover">
+          <h1 data-animation="reveal">The Cognitive Complexity of CSS</h1>
+          <p>by <b>Martin Donath</b>, @squidfunk</p>
+        </section>
+
+        
+        <section class="content">
+          <h2 data-animation="reveal">
+            Hi, I'm @squidfunk
+          </h2>
+          <img src="assets/images/squidfunk.jpg" class="photo">
+          <ul>
+            <li class="fragment">
+              10+ years of debugging and fixing broken layouts
+            </li>
+            <li class="fragment">
+              I like to build products front to back
+            </li>
+            <li class="fragment">
+              I'm building an analytical browser engine
+            </li>
+            <li class="fragment">
+              I'm actively researching (i.e. deconstructing) CSS
+            </li>
+          </ul>
+          <p class="fragment">
+            This presentation is located at:<br>
+            <a href="https://squidfunk.github.io/talks/css-cognitive-complexity">
+              squidfunk.github.io/talks/css-cognitive-complexity
+            </a>
+          </p>
+        </section>
+
+        
+        <section class="content">
+          <h2 data-animation="reveal">
+            Yes. People are researching CSS
+          </h2>
+          <ul style="font-size:.5em">
+            <li>2018 – Automated Repair of Mobile Friendly Problems in Web Pages</li>
+            <li>2017 – Machine Learning and Evolutionary Computing for GUI-based Regression Testing</li>
+            <li>2017 – XFIX - An Automated Tool for the Repair of Layout Cross Browser Issues</li>
+            <li>2016 – Automated Reasoning for Web Page Layout</li>
+            <li>2016 – Defect Prediction for Cascading Style Sheets</li>
+            <li>2016 – Detecting and Localizing Visual Inconsistencies in Web Applications</li>
+            <li>2016 – Using Visual Symptoms for Debugging Presentation Failures in Web Applications</li>
+            <li>2015 – Code Smells in Cascading Style Sheets – An Empirical Study and a Predictive Model</li>
+            <li>2015 – Detecting Redundant CSS Rules in HTML5 Applications - A Tree Rewriting Approach</li>
+            <li>2015 – Detection and Localization of HTML Presentation Failures Using Computer Vision-Based Techniques</li>
+            <li>2015 – Tool Support for Cascading Style Sheets' Complexity Metrics</li>
+            <li>2014 – Automated Refactoring for Size Reduction of CSS Style Sheets</li>
+            <li>2014 – Discovering Refactoring Opportunities in Cascading Style Sheets</li>
+            <li>2014 – Finding HTML Presentation Failures Using Image Comparison Techniques</li>
+            <li>2013 – Visualizing Change Impact of Cascading Style Sheets</li>
+            <li>2012 – Automated Analysis of CSS Rules to Support Style Maintenance</li>
+            <li>2012 – On the Analysis of Cascading Style Sheets</li>
+            <li>2010 – CSS Code Quality - A Metric for Abstractness</li>
+            <li>2009 – Complexity Metrics for CSS</li>
+            <li>...</li>
+          </ul>
+        </section>
+
+        
+        <section>
+          <h2 data-animation="reveal">I like CSS</h2>
+        </section>
+
+        
+        <section class="content">
+          <h2 data-animation="reveal">Easy to Learn, Hard to Master</h2>
+          <ul>
+            <li class="fragment positive">
+              Amazingly simple to read and write
+            </li>
+            <li class="fragment positive">
+              Flexible and unopinionated architecture
+            </li>
+          </ul>
+          <ul>
+            <li class="fragment negative">
+              Hard to control when code base is growing
+            </li>
+            <li class="fragment negative">
+              Complexity must be managed strategically
+            </li>
+          </ul>
+        </section>
+
+        
+        <section class="content">
+          <h2 data-animation="reveal">Complexity</h2>
+          <div class="fragment">
+            <h3 data-animation="reveal">Computational Complexity</h3>
+            <p>
+              What resources (space and time) are necessary to solve a problem?
+              <br>
+              <span class="fragment">
+                If computational complexity increases,
+                <b class="negative">performance</b> decreases
+              </span>
+            </p>
+          </div>
+          <div class="fragment">
+            <h3 data-animation="reveal">Cognitive Complexity</h3>
+            <p>
+              How difficult is the code to read and understand?
+              <br>
+              <span class="fragment">
+                If cognitive complexity increases,
+                <b class="negative">productivity</b> decreases
+              </span>
+            </p>
+          </div>
+        </section>
+
+        
+        <section class="content">
+          <h2>Complexity</h2>
+          <div style="opacity:.25">
+            <h3>Computational Complexity</h3>
+            <p>
+              What resources (space and time) are necessary to solve a problem?
+              <br>
+              <span>
+                If computational complexity increases,
+                <b class="negative">performance</b> decreases
+              </span>
+            </p>
+          </div>
+          <div>
+            <h3>Cognitive Complexity</h3>
+            <p>
+              How difficult is the code to read and understand?
+              <br>
+              <span>
+                If cognitive complexity increases,
+                <b class="negative">productivity</b> decreases
+              </span>
+            </p>
+          </div>
+        </section>
+
+        
+        <section class="content">
+          <h2 data-animation="reveal">What Could Possibly Go Wrong?</h2>
+          <div class="fragment">
+            <p>What's the background and text color of the first link?</p>
+            <div class="columns">
+              <pre>
+                <code lang="html" class="html">
+                  <header>
+                    <ul>
+                      <li>
+                        <a class="ext">...</a>
+                      </li>
+                      <li>
+                        <a class="ext">...</a>
+                      </li>
+                    </ul>
+                  </header>
+                </code>
+              </pre>
+              <pre>
+                <code lang="css" class="css">
+                  a.ext {
+                    color: white;
+                  }
+                  ul li:first-child a {
+                    background-color: white;
+                  }
+                  header a {
+                    background-color: grey;
+                    color: black;
+                  }
+                </code>
+              </pre>
+            </div>
+          </div>
+        </section>
+
+        
+        <section class="content">
+          <h2>What Could Possibly Go Wrong?</h2>
+          <p>What's the background and text color of the first link?</p>
+          <div class="columns">
+            <pre>
+              <code lang="html" class="html">
+                <header>
+                  <ul>
+                    <li>
+                      <a class="ext">...</a>
+                    </li>
+                    <li>
+                      <a class="ext">...</a>
+                    </li>
+                  </ul>
+                </header>
+              </code>
+            </pre>
+            <pre>
+              <code lang="css" class="css">
+                a.ext {
+                  color: <b>white</b>;
+                }
+                ul li:first-child a {
+                  background-color: <b>white</b>;
+                }
+                header a {
+                  <del>background-color: grey;</del>
+                  <del>color: black;</del>
+                }
+              </code>
+            </pre>
+          </div>
+        </section>
+
+        
+        <section class="content">
+          <h2 data-animation="reveal">Agenda</h2>
+          <ol>
+            <li class="fragment">Scope and Precedence</li>
+            <li class="fragment">Complexity Management</li>
+            <li class="fragment">Static Analysis</li>
+            <li class="fragment">Dynamic Analysis</li>
+          </ol>
+        </section>
+
+        
+        <section>
+          <h2 data-animation="reveal">Scope and Precedence</h2>
+        </section>
+
+        
+        <section class="content">
+          <h2 data-animation="reveal">Scope</h2>
+          <p class="fragment">
+            The elements (i.e. subtrees) a rule applies to
+          </p>
+          <div class="fragment">
+            <h3 data-animation="reveal">Example</h3>
+            <pre>
+              <code lang="css" class="css">
+                /* All links */
+                a { ... }
+
+                /* All external links */
+                a.ext { ... }
+
+                /* All external header links */
+                header a.ext { ... }
+              </code>
+            </pre>
+          </div>
+        </section>
+
+        
+        <section class="content">
+          <h2 data-animation="reveal">Precedence</h2>
+          <p class="fragment">
+            The ordering of rules, in case multiple rules match an element
+          </p>
+          <div class="fragment">
+            <h3 data-animation="reveal">Algorithm</h3>
+            <ol>
+              <li>Order rules by specificity</li>
+              <li class="fragment">
+                Order rules with same specificity by location
+              </li>
+            </ol>
+          </div>
+        </section>
+
+        
+        <section class="content">
+          <h2 data-animation="reveal">Specificity</h2>
+          <p class="fragment">
+            A quadruple of numbers (e.g. [0, 0, 1, 1]) giving a rule weight
+          </p>
+          <div class="fragment">
+            <h3 data-animation="reveal">Calculation</h3>
+            <ol>
+              <li style="opacity:.5">
+                1 if inline declaration, 0 otherwise
+              </li>
+              <li class="fragment">Number of id selectors</li>
+              <li class="fragment">
+                Number of (pseudo-)class and attribute selectors
+              </li>
+              <li class="fragment">
+                Number of (pseudo-)element selectors
+              </li>
+            </ol>
+          </div>
+        </section>
+
+        
+        <section class="content">
+          <h2>Specificity</h2>
+          <p>
+            A quadruple of numbers (e.g. [0, 0, 1, 1]) giving a rule weight
+          </p>
+          <h3 data-animation="reveal">Example</h3>
+          <pre>
+            <code lang="css" class="css">
+              /* Specificity: <span class="fragment">[0, 0, 1, 3]</span> */
+              nav a:hover::before { ... }
+
+              /* Specificity: <span class="fragment">[0, 1, 1, 2]</span> */
+              ul#primary-nav li.active { ... }
+            </code>
+          </pre>
+          <p class="fragment">
+            Try the specificity calculator at
+            <a href="https://specificity.keegan.st/">
+              specificity.keegan.st
+            </a>
+          </p>
+        </section>
+
+        
+        <section class="content">
+          <h2 data-animation="reveal">Scope and Precedence</h2>
+          <p class="fragment">
+            A rule expresses scope and precedence at the same time
+          </p>
+          <div class="fragment">
+            <h3 data-animation="reveal">Example</h3>
+            <pre>
+              <code lang="css" class="css">
+                /* Large scope, low precedence */
+                a { ... }
+
+                /* Medium scope, medium precedence */
+                a.ext { ... }
+
+                /* Small scope, high precedence */
+                header a.ext { ... }
+              </code>
+            </pre>
+          </div>
+        </section>
+
+        
+        <section class="content">
+          <h2>What Could Possibly Go Wrong?</h2>
+          <p>What's the background and text color of the first link?</p>
+          <div class="columns">
+            <pre>
+              <code lang="html" class="html">
+                <header>
+                  <ul>
+                    <li>
+                      <a class="ext">...</a>
+                    </li>
+                    <li>
+                      <a class="ext">...</a>
+                    </li>
+                  </ul>
+                </header>
+              </code>
+            </pre>
+            <pre>
+              <code lang="css" class="css">
+                a.ext {
+                  color: <b>white</b>;
+                } /* [0, 0, 1, 1] */
+                ul li:first-child a {
+                  background-color: <b>white</b>;
+                } /* [0, 0, 1, 3] */
+                header a {
+                  <del>background-color: grey;</del>
+                  <del>color: black;</del>
+                } /* [0, 0, 0, 2] */
+              </code>
+            </pre>
+          </div>
+        </section>
+
+        
+        <section class="content">
+          <h2 data-animation="reveal">Still not convinced?</h2>
+          <div class="fragment">
+            <p>Maximum number of matched selectors <b>per element</b></p>
+            <img src="assets/images/selectors-max.svg" width="75%">
+          </div>
+        </section>
+
+        
+        <section data-background-image="assets/images/this-is-fine.jpg">
+        </section>
+
+        
+        <section class="content">
+          <h2 data-animation="reveal">Wait, there is more</h2>
+          <p class="fragment">
+            Other factors that add to cognitive complexity
+          </p>
+          <div class="fragment">
+            <h3 data-animation="reveal">An incomplete list</h3>
+            <ul>
+              <li>Inherited properties</li>
+              <li class="fragment">
+                Conditional rules (media and feature queries)
+              </li>
+              <li class="fragment">
+                Browser compatibility
+              </li>
+              <li class="fragment">
+                Browser bugs
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        
+        <section>
+          <h2 data-animation="reveal">Complexity Management</h2>
+        </section>
+
+        
+        <section class="content">
+          <h2 data-animation="reveal">Organisation Systems</h2>
+          <p class="fragment">
+            <b>BEM</b>, OOCSS, SMACSS, <b>Atomic CSS</b>, ...
+          </p>
+          <ul>
+            <li class="fragment positive">
+              Guidance for large teams and code bases
+            </li>
+            <li class="fragment positive">
+              Help keeping cognitive complexity low
+            </li>
+          </ul>
+          <ul>
+            <li class="fragment negative">
+              Weird situations when followed religiously
+            </li>
+            <li class="fragment negative">
+              Scope and Precedence issues still arise
+            </li>
+          </ul>
+        </section>
+
+        
+        <section class="content">
+          <h2 data-animation="reveal">Style Boundaries</h2>
+          <p class="fragment">
+            <b>Web Components</b>, CSS Modules (CSS-in-JS)
+          </p>
+          <ul>
+            <li class="fragment positive">
+              Mitigate Scope and Precedence issues
+            </li>
+            <li class="fragment positive">
+              Reduce or prevent accidental leakage
+            </li>
+          </ul>
+          <ul>
+            <li class="fragment negative">
+              Mixing with global styles is cumbersome
+            </li>
+            <li class="fragment negative">
+              Come with caveats (e.g. compatibility, duplication, ...)
+            </li>
+          </ul>
+        </section>
+
+        
+        <section>
+          <h2 data-animation="reveal">Static Analysis</h2>
+        </section>
+
+        
+        <section class="content">
+          <h2 data-animation="reveal">Style Statistics</h2>
+          <p class="fragment">
+            Analyse statistical properties of styles (#, avg, min, max)
+          </p>
+          <div class="fragment">
+            <h3 data-animation="reveal">Metrics</h3>
+            <ul>
+              <li>Lines of code</li>
+              <li class="fragment">
+                Selectors per rule, declarations per rule
+              </li>
+              <li class="fragment">
+                Number of colors, font sizes, box shadows, ...
+              </li>
+              <li class="fragment">
+                ...
+              </li>
+            </ul>
+          </div>
+          <p class="fragment">
+            Try the static analyser at
+            <a href="https://www.projectwallace.com/">
+              projectwallace.com
+            </a>
+          </p>
+        </section>
+
+        
+        <section class="content">
+          <h2>Style Statistics</h2>
+          <p>
+            Analyse statistical properties of styles (#, avg, min, max)
+          </p>
+          <ul>
+            <li class="positive">
+              Can give a general idea of code base health
+            </li>
+            <li class="fragment positive">
+              Good for deduplication (colors, shadows, etc.)
+            </li>
+          </ul>
+          <ul>
+            <li class="fragment negative">
+              Often (mistakenly) called <b>complexity analysis</b>
+            </li>
+            <li class="fragment negative">
+              Too coarse for complexity management
+            </li>
+          </ul>
+        </section>
+
+        
+        <section class="content">
+          <h2 data-animation="reveal">Specificity Graph</h2>
+          <p class="fragment">
+            Visualise precedence (location and specificity)
+          </p>
+          <div class="fragment">
+            <div class="columns">
+              <pre>
+                <code lang="css" class="css">
+                  a { ... }
+                  header a { ... }
+                  nav ul a { ... }
+                  header ul li a { ... }
+                  a.ext { ... }
+                  nav a.ext { ... }
+                  a.ext:visited { ... }
+                  #home header a { ... }
+                </code>
+              </pre>
+              <img src="assets/images/specificity-expectation.svg" style="flex:1.5">
+            </div>
+            <p>How the specificity graph <b>should look</b></p>
+          </div>
+        </section>
+
+        
+        <section class="content">
+          <h2>Specificity Graph</h2>
+          <p>Visualise precedence (location and specificity)</p>
+          <div class="columns">
+            <pre>
+              <code lang="css" class="css">
+                a { ... }
+                a.ext { ... }
+                a.ext:visited { ... }
+                header a { ... }
+                #home header a { ... }
+                header ul li a { ... }
+                nav ul a { ... }
+                nav a.ext { ... }
+              </code>
+            </pre>
+            <img src="assets/images/specificity-reality.svg" style="flex:1.5">
+          </div>
+          <p>How the specificity graph <b>actually looks</b></p>
+        </section>
+
+        
+        <section class="content">
+          <h2>Specificity Graph</h2>
+          <p>Visualise precedence (location and specificity)</p>
+          <div class="columns">
+            <pre>
+              <code lang="css" class="css">
+                a { ... }
+                a.ext { ... }
+                a.ext:visited { ... }
+                header a { ... }
+                #home header a { ... }
+                header ul li a { ... }
+                nav ul a { ... }
+                nav a.ext { ... }
+              </code>
+            </pre>
+            <img src="assets/images/specificity-component.svg" style="flex:1.5">
+          </div>
+          <p>
+            How the specificity graph for a <b>component architecture</b> looks
+          </p>
+        </section>
+
+        
+        <section>
+          <h2 data-animation="reveal">Dynamic Analysis</h2>
+        </section>
+
+        
+        <section class="content">
+          <h2 data-animation="reveal">Spectral Specificity Graph</h2>
+          <p class="fragment">
+            Visualise <b>element-selector</b> relations
+          </p>
+          <div class="fragment">
+            <h3 data-animation="reveal">Motivation</h3>
+            <ol>
+              <li>See how the styles are <b>actually used</b></li>
+              <li class="fragment">
+                Quantify Cognitive Complexity <b>per element</b>
+              </li>
+              <li class="fragment">
+                Find (and fix) <b>drops in specificity</b>
+              </li>
+            </ol>
+          </div>
+        </section>
+
+        
+        <section>
+          <img src="assets/images/specificity-spectrogram.svg" width="90%">
+        </section>
+
+        
+        <section class="content">
+          <h2 data-animation="reveal">Selector Networks</h2>
+          <p class="fragment">
+            Visualise <b>dependencies between selectors</b>
+          </p>
+          <div class="fragment">
+            <h3 data-animation="reveal">Motivation</h3>
+            <ol>
+              <li>See how the styles are <b>actually used</b></li>
+              <li class="fragment">
+                Quantify Cognitive Complexity <b>per selector</b>
+              </li>
+              <li class="fragment">
+                Find (and fix) <b>accidental overrides</b>
+              </li>
+            </ol>
+          </div>
+        </section>
+
+        
+        <section>
+          <h2 data-animation="reveal">Demo</h2>
+        </section>
+
+        
+        <section>
+          <h2 data-animation="reveal">Conclusion</h2>
+        </section>
+
+        
+        <section class="content">
+          <h2 data-animation="reveal">There's much to be done</h2>
+          <p class="fragment">
+            Managing cognitive complexity strategically is crucial
+          </p>
+          <ul>
+            <li class="fragment positive">
+              Increased confidence when changing code
+            </li>
+            <li class="fragment positive">
+              Reduced maintenance, less bugs
+            </li>
+          </ul>
+          <ul>
+            <li class="fragment negative">
+              Available tooling doesn't help
+            </li>
+            <li class="fragment negative">
+              Currently no automated solutions
+            </li>
+          </ul>
+        </section>
+
+        
+        <section>
+          <h2 data-animation="reveal">That's it</h2>
+          <p>
+            visit <a href="https://ginseng.ai">ginseng.ai</a> to stay updated
+          </p>
+        </section>
+      </div>
+    </div>
+  <script src="bundle.3754e62524a7dbd3f558.js"></script></body>
+</html>
