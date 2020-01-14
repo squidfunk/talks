@@ -18,6 +18,12 @@
     "type": "git",
     "url": "https://github.com/squidfunk/talks.git"
   },
+  "scripts": {
+    "build": "make build",
+    "clean": "make clean",
+    "lint": "make lint",
+    "start": "make start"
+  },
   "dependencies": {
     "escape-html": "^1.0.3",
     "highlight.js": "^9.17.1",

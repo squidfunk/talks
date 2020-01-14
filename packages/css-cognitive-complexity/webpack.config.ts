@@ -75,7 +75,7 @@ export default (_env: never, args: Configuration): Configuration => {
     /* Output */
     output: {
       path: path.resolve(__dirname, "dist"),
-      filename: "bundle.[contenthash].js"
+      filename: "bundle.[hash].js"
     },
 
     /* Module resolver */

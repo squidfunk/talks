@@ -129,7 +129,7 @@ const background = document.querySelector<HTMLElement>(".backgrounds .cover")!
 new p5((p: p5) => {
 
   /* Fractal pattern and coefficients */
-  const patterns = [
+  const pattern = [
     'QFFVSLMIIGCR', 'QGGVSLMHHGCR', 'GIIETPIQRRUL', 'GLXOESFTTPSV',
     'MDVAIDOYHYEA', 'SOJSCEMKBBBE', 'SKDCIBQUXECQ', 'RGSBQEULKGQJ',
     'KXSHMMNQHGMX', 'GPFBSLPSSIFM', 'VLEJLCRUFQTJ', 'RCHFLWXCOKOK',
@@ -149,8 +149,8 @@ new p5((p: p5) => {
   /* Initialize canvas and coefficients */
   p.setup = () => {
     p.createCanvas(window.screen.width, window.screen.height)
-    for (let i = 0; i < patterns.length; i++)
-      a[i] = (patterns.charCodeAt(i) - 65 - 12) / 10
+    for (let i = 0; i < pattern.length; i++)
+      a[i] = (pattern.charCodeAt(i) - 65 - 12) / 10
   };
 
   /* Center and rotate canvas and draw points */
