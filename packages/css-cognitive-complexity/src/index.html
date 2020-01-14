@@ -25,14 +25,17 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>CSS: Cognitive Complexity</title>
+    <title>The Cognitive Complexity of CSS</title>
   </head>
   <body>
     <div class="reveal">
       <div class="slides">
 
-        <!-- Title slide -->
-        <section>TBD</section>
+        <!-- Cover slide -->
+        <section class="cover">
+          <h1 data-animation="reveal">The Cognitive Complexity of CSS</h1>
+          <p>by <b>Martin Donath</b>, @squidfunk</p>
+        </section>
 
         <!-- Hi, I'm @squidfunk -->
         <section class="content">
@@ -48,7 +51,7 @@
               I like to build products front to back
             </li>
             <li class="fragment">
-              I'm on the quest to <em>solving</em> cross-browser layout
+              I'm building an analytical browser engine
             </li>
             <li class="fragment">
               I'm actively researching (i.e. deconstructing) CSS
@@ -137,6 +140,33 @@
               How difficult is the code to read and understand?
               <br/>
               <span class="fragment">
+                If cognitive complexity increases,
+                <b class="negative">productivity</b> decreases
+              </span>
+            </p>
+          </div>
+        </section>
+
+        <!-- Complexity -->
+        <section class="content">
+          <h2>Complexity</h2>
+          <div style="opacity: 0.25">
+            <h3>Computational Complexity</h3>
+            <p>
+              What resources (space and time) are necessary to solve a problem?
+              <br/>
+              <span>
+                If computational complexity increases,
+                <b class="negative">performance</b> decreases
+              </span>
+            </p>
+          </div>
+          <div>
+            <h3>Cognitive Complexity</h3>
+            <p>
+              How difficult is the code to read and understand?
+              <br/>
+              <span>
                 If cognitive complexity increases,
                 <b class="negative">productivity</b> decreases
               </span>
@@ -613,9 +643,9 @@
           <h2 data-animation="reveal">Dynamic Analysis</h2>
         </section>
 
-        <!-- Applied Specificity Graph -->
+        <!-- Spectral Specificity Graph -->
         <section class="content">
-          <h2 data-animation="reveal">Applied Specificity Graph</h2>
+          <h2 data-animation="reveal">Spectral Specificity Graph</h2>
           <p class="fragment">
             Visualise precedence <b>per element</b> (location and specificity)
           </p>
@@ -629,16 +659,16 @@
           </div>
         </section>
 
-        <!-- Applied Specificity Graph -->
+        <!-- Spectral Specificity Graph -->
         <section>
-          <img src="assets/images/specificity-applied.svg" width="90%" />
+          <img src="assets/images/specificity-spectrogram.svg" width="90%" />
         </section>
 
         <!-- Selector Networks -->
         <section class="content">
           <h2 data-animation="reveal">Selector Networks</h2>
           <p class="fragment">
-            Visualise of selector relationships <b>per document</b>
+            Visualise selector relationships <b>per document</b>
           </p>
           <div class="fragment">
             <h3 data-animation="reveal">Algorithm</h3>

@@ -22,6 +22,7 @@
 
 import escape from "escape-html"
 import * as Highlight from "highlight.js/lib/highlight"
+import p5 from "p5"
 import * as Reveal from "reveal.js"
 
 import XML from "highlight.js/lib/languages/xml"
@@ -118,3 +119,65 @@ Highlight.registerLanguage("css", CSS)
 
 /* Initialize syntax highlighting */
 Highlight.initHighlightingOnLoad()
+
+/* ----------------------------------------------------------------------------
+ * Cover animation
+ * ------------------------------------------------------------------------- */
+
+/* Inject canvas into background of cover slide */
+const background = document.querySelector<HTMLElement>(".backgrounds .cover")!
+new p5((p: p5) => {
+
+  /* Fractal pattern and coefficients */
+  const patterns = [
+    'QFFVSLMIIGCR', 'QGGVSLMHHGCR', 'GIIETPIQRRUL', 'GLXOESFTTPSV',
+    'MDVAIDOYHYEA', 'SOJSCEMKBBBE', 'SKDCIBQUXECQ', 'RGSBQEULKGQJ',
+    'KXSHMMNQHGMX', 'GPFBSLPSSIFM', 'VLEJLCRUFQTJ', 'RCHFLWXCOKOK',
+    'VFPPDBCPMSXU', 'LFMTGMBOOJLX', 'NJRJRBSNCPFC', 'SNMBDRFPSEIP',
+    'XMDLHBOPUBET', 'OGLHHOWCLJGH', 'WGLMMLHQQQVL', 'SGOIOBSSESVI',
+    'CINQELRDGMMT', 'DQQOSVCFUOQT', 'EMVWPTIVPHFS', 'LDUFWSKSBIGQ',
+    'IPMBFXSCMKQK', 'TWNXRBQLKKJI', 'PDCTWHGFMRRQ', 'LKNIUIKWLHDP',
+    'QTMWTJSLGRIH', 'ODKIXHJDVPSD', 'VJGWFEBROVPS', 'TCOSMDEMSFDM',
+    'EDQIHKNGHCOH'
+  ][13] // 7
+  const a: number[] = []
+  const r = p.random(360)
+
+  /* Initialize coordinates */
+  let x = 0.1, y = 0.1
+
+  /* Initialize canvas and coefficients */
+  p.setup = () => {
+    p.createCanvas(window.screen.width, window.screen.height)
+    for (let i = 0; i < patterns.length; i++)
+      a[i] = (patterns.charCodeAt(i) - 65 - 12) / 10
+  };
+
+  /* Center and rotate canvas and draw points */
+  p.draw = () => {
+    p.translate(p.width / 2, p.height / 2)
+    p.rotate(p.radians(r));
+
+    /* Draw 250 points */
+    for (let i = 0; i < 250; i++) {
+      p.stroke(
+        p.lerpColor(
+          p.color(255, 82, 82, 150),
+          p.color(0, 255, 102, 150),
+          p.pow(p.abs(x) / 1.2, 1.5)
+        )
+      )
+      p.point(x * p.width / 2, y * p.width / 2);
+
+      /* Calculate next point */
+      const x0 = a[0]         +  a[1] * x +  a[2] * x * x
+               + a[3] * x * y +  a[4] * y +  a[5] * y * y
+      const y0 = a[6]         +  a[7] * x +  a[8] * x * x
+               + a[9] * x * y + a[10] * y + a[11] * y * y
+
+      /* Set next coordinates */
+      x = x0
+      y = y0
+    }
+  }
+}, background)
