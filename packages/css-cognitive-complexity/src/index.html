@@ -26,6 +26,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>The Cognitive Complexity of CSS</title>
+    <script>
+      window.ga = window.ga || function() {
+        (ga.q = ga.q || []).push(arguments)
+      }
+      ga.l = +new Date
+      ga("create", "UA-73586301-3", "auto")
+      ga("set", "anonymizeIp", true)
+      ga("send", "pageview")
+    </script>
+    <script async src="https://www.google-analytics.com/analytics.js"></script>
   </head>
   <body>
     <div class="reveal">
@@ -48,21 +58,21 @@
               10+ years of debugging and fixing broken layouts
             </li>
             <li class="fragment">
-              I like to build products front to back
+              I love to build products front to back
             </li>
             <li class="fragment">
-              I'm building an analytical browser engine
+              I'm on the quest of <em>solving</em> cross browser layout
             </li>
             <li class="fragment">
               I'm actively researching (i.e. deconstructing) CSS
             </li>
           </ul>
-          <p class="fragment">
+          <!-- <p class="fragment">
             This presentation is located at:<br />
             <a href="https://squidfunk.github.io/talks/css-cognitive-complexity">
               squidfunk.github.io/talks/css-cognitive-complexity
             </a>
-          </p>
+          </p> -->
         </section>
 
         <!-- Yes. People are researching CSS -->
@@ -107,7 +117,7 @@
               Amazingly simple to read and write
             </li>
             <li class="fragment positive">
-              Flexible and unopinionated architecture
+              Architecture: flexible and unopinionated
             </li>
           </ul>
           <ul>
@@ -115,7 +125,7 @@
               Hard to control when code base is growing
             </li>
             <li class="fragment negative">
-              Complexity must be managed strategically
+              Complexity has to be managed strategically
             </li>
           </ul>
         </section>
@@ -248,17 +258,6 @@
           </div>
         </section>
 
-        <!-- Agenda -->
-        <section class="content">
-          <h2 data-animation="reveal">Agenda</h2>
-          <ol>
-            <li class="fragment">Scope and Precedence</li>
-            <li class="fragment">Complexity Management</li>
-            <li class="fragment">Static Analysis</li>
-            <li class="fragment">Dynamic Analysis</li>
-          </ol>
-        </section>
-
         <!-- Scope and Precedence -->
         <section>
           <h2 data-animation="reveal">Scope and Precedence</h2>
@@ -308,7 +307,7 @@
         <section class="content">
           <h2 data-animation="reveal">Specificity</h2>
           <p class="fragment">
-            A quadruple of numbers (e.g. [0, 0, 1, 1]) giving a rule weight
+            The weight of a rule given by a tuple, e.g. [0, 0, 1, 1]
           </p>
           <div class="fragment">
             <h3 data-animation="reveal">Calculation</h3>
@@ -331,7 +330,7 @@
         <section class="content">
           <h2>Specificity</h2>
           <p>
-            A quadruple of numbers (e.g. [0, 0, 1, 1]) giving a rule weight
+            The weight of a rule given by a tuple, e.g. [0, 0, 1, 1]
           </p>
           <h3 data-animation="reveal">Example</h3>
           <pre>
@@ -504,9 +503,9 @@
           <h2 data-animation="reveal">Static Analysis</h2>
         </section>
 
-        <!-- Style Statistics -->
+        <!-- Descriptive Statistics -->
         <section class="content">
-          <h2 data-animation="reveal">Style Statistics</h2>
+          <h2 data-animation="reveal">Descriptive Statistics</h2>
           <p class="fragment">
             Analyse statistical properties of styles (#, avg, min, max)
           </p>
@@ -533,9 +532,9 @@
           </p>
         </section>
 
-        <!-- Style Statistics -->
+        <!-- Descriptive Statistics -->
         <section class="content">
-          <h2>Style Statistics</h2>
+          <h2>Descriptive Statistics</h2>
           <p>
             Analyse statistical properties of styles (#, avg, min, max)
           </p>
@@ -665,7 +664,12 @@
 
         <!-- Spectral Specificity Graph -->
         <section>
-          <img src="assets/images/specificity-spectrogram.svg" width="90%" />
+          <img src="assets/images/specificity-spectral-1.svg" width="90%" />
+        </section>
+
+        <!-- Spectral Specificity Graph -->
+        <section>
+          <img src="assets/images/specificity-spectral-2.svg" width="90%" />
         </section>
 
         <!-- Selector Networks -->
@@ -709,12 +713,12 @@
               Increased confidence when changing code
             </li>
             <li class="fragment positive">
-              Reduced maintenance, less bugs
+              Higher productivity, reduced maintenance
             </li>
           </ul>
           <ul>
             <li class="fragment negative">
-              Available tooling doesn't help
+              Available tooling doesn't help at all
             </li>
             <li class="fragment negative">
               Currently no automated solutions

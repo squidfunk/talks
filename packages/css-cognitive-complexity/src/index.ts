@@ -162,8 +162,8 @@ new p5((p: p5) => {
     for (let i = 0; i < 250; i++) {
       p.stroke(
         p.lerpColor(
-          p.color(255, 82, 82, 150),
-          p.color(0, 255, 102, 150),
+          p.color(255, 82, 82, 100),
+          p.color(0, 255, 102, 100),
           p.pow(p.abs(x) / 1.2, 1.5)
         )
       )
