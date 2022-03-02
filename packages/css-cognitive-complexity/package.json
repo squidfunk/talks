@@ -28,7 +28,7 @@
     "escape-html": "^1.0.3",
     "highlight.js": "^9.17.1",
     "p5": "^0.10.2",
-    "reveal.js": "^3.8.0"
+    "reveal.js": "^4.3.0"
   },
   "devDependencies": {
     "@polvtypes/reveal.js": "^3.8.1",
